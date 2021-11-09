@@ -10,7 +10,7 @@
 #### How to get started:
 
 ```console
-#### Technologies: go mod init 
+bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go   --it creates a new go module.
 ```
  
 
