@@ -6,11 +6,14 @@
 
 * Go;
 * gRPC;
+* Protocol Buffers (https://developers.google.com/protocol-buffers)
 
 #### How to get started:
 
 ```console
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go   --it creates a new go module.
 ```
+
+
  
 
