@@ -11,7 +11,11 @@
 #### How to get started:
 
 ```console
-bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go   --it creates a new go module.
+#it creates a new go module.
+bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
+
+#it generates stubs services
+bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=br/com/bscpaz/user
 ```
 
 
