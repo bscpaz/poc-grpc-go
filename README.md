@@ -22,6 +22,7 @@ export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
 bscpaz@2am:/$ mkdir pb
 bscpaz@2am:/$ mkdir proto 
 bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
+bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 #it creates a new go module.
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
