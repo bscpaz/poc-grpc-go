@@ -26,6 +26,7 @@ bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 #it creates a new go module.
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
+
 bscpaz@2am:/$ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 #it generates stubs services
