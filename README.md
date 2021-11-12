@@ -11,6 +11,18 @@
 #### How to get started:
 
 ```console
+#.profile
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/projects/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
+```
+
+```console
+bscpaz@2am:/$ mkdir pb
+bscpaz@2am:/$ mkdir proto 
+bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
+
 #it creates a new go module.
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
 
