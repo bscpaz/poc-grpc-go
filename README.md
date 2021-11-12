@@ -27,7 +27,7 @@ bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
 
 #it generates stubs services
-bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb
+bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
 ```
 
 
