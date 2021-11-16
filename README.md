@@ -34,10 +34,11 @@ bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
 #it creates a new go module.
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
 
+#Intall protocol buffers on machine.
 bscpaz@2am:/$ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
-#it generates stubs services
+#it generates stubs in Go language
 bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
 ```
 
