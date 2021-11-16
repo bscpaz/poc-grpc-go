@@ -10,8 +10,7 @@
 
 * gRPC (https://grpc.io/);
   * _In gRPC, a client application can directly call a method on a server application on a different machine as if it were a local object, making it easier for you to create distributed applications and services._
-  * <img src="https://user-images.githubusercontent.com/9732874/142056444-3b1efa74-dc2e-4ff1-a58c-397063d63922.png" width="500"/>
-
+  <img src="https://user-images.githubusercontent.com/9732874/142060820-6dac8f12-1b1e-4c53-9e30-d3f856004557.png" width="700" align="center"/>
 
 * Protocol Buffers (https://developers.google.com/protocol-buffers)
   * _Protocol buffers are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data – think XML, but smaller, faster, and simpler. You define how you want your data to be structured once, then you can use special generated source code to easily write and read your structured data to and from a variety of data streams and using a variety of languages._
