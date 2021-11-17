@@ -34,7 +34,7 @@ bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
 
 #Intall protocol buffers on machine.
-bscpaz@2am:/$ go get google.golang.org/grpc
+bscpaz@2am:/$ go get -u google.golang.org/grpc
 bscpaz@2am:/$ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
@@ -42,6 +42,13 @@ bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
 ```
 
+<hr>
+<h4 align="center">Known issues</h4>
 
- 
+```console
+Issue:
+  could not import "google.golang.org/grpc"
+Solution:
+  bscpaz@2am:/$ go get -u google.golang.org/grpc
+```  
 
