@@ -48,6 +48,12 @@ bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=
 bscpaz@2am:/$ go run cmd/server/server.go
 ```
 
+#### How to test gRPC calls:
+Intall and use the project evans:
+
+* https://github.com/ktr0731/evans
+
+
 <hr>
 <h4 align="center">Known issues</h4>
 
