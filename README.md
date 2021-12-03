@@ -56,7 +56,7 @@ Install and use the Evans project:
 ```console
 #From user's root directory
 
-#After extract, add evans into .profile file:
+#After extract evans program, add evans into .profile file:
 export EVANS=$GOBIN/evans
 export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN:$EVANS
 
