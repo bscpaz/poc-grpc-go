@@ -63,6 +63,9 @@ export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN:$EVANS
 #Create needed folder.
 bscpaz@2am:/$ sudo mkdir .cache/evans
 bscpaz@2am:/$ sudo chown -R bscpaz:bscpaz .cache/
+
+#From project's folder.
+bscpaz@2am:/$ evans -r repl --host localhost --port 50051
 ```
 
 
