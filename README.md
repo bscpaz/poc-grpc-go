@@ -71,6 +71,13 @@ pb.UserService@localhost:50051> call AddUser
 id (TYPE_INT32) => 0
 name (TYPE_STRING) => Bruno Paz
 email (TYPE_STRING) => soujava@gmail.com
+
+#Below is the result of client call to server. Note the value of "id":
+{
+  "email": "soujava@gmail.com",
+  "id": 123456,
+  "name": "Bruno Paz"
+}
 ```
 
 
