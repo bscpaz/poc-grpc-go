@@ -77,5 +77,14 @@ Issue:
   could not import "google.golang.org/grpc"
 Solution:
   bscpaz@2am:/$ go get -u google.golang.org/grpc
-```  
-
+``` 
+```console
+Issue:
+    bscpaz@2am:$ evans -r repl --host localhost --port 50051
+    evans: failed to run REPL mode: failed to instantiate a new spec: failed to instantiate the spec: 
+    failed to list packages by gRPC reflection: failed to list services from reflection enabled gRPC server: 
+    rpc error: code = Unimplemented desc = unknown service grpc.reflection.v1alpha.ServerReflection
+Solution:
+    Add reflection mode into code: 
+      reflection.Register(grpcServer)
+``` 
