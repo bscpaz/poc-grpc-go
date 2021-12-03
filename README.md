@@ -49,7 +49,7 @@ bscpaz@2am:/$ go run cmd/server/server.go
 ```
 
 #### How to test gRPC calls:
-Install and use the project evans:
+Install and use the Evans project:
 
 * https://github.com/ktr0731/evans
 
