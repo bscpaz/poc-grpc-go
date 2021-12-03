@@ -54,9 +54,7 @@ Install and use the Evans project:
 * https://github.com/ktr0731/evans
 
 ```console
-#From user's root directory
-
-#After extract evans program, add evans into .profile file:
+#After extract evans program into "/usr/local/go/bin" folder, add evans into .profile file:
 export EVANS=$GOBIN/evans
 export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN:$EVANS
 
