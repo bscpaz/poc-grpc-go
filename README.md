@@ -58,7 +58,7 @@ Install and use the Evans project:
 export EVANS=$GOBIN/evans
 export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN:$EVANS
 
-#Create needed folder.
+#Create needed folder at user's home folder.
 bscpaz@2am:/$ sudo mkdir .cache/evans
 bscpaz@2am:/$ sudo chown -R bscpaz:bscpaz .cache/
 
