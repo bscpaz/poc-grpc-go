@@ -66,6 +66,11 @@ bscpaz@2am:/$ sudo chown -R bscpaz:bscpaz .cache/
 
 #From project's folder.
 bscpaz@2am:/$ evans -r repl --host localhost --port 50051
+pb.UserService@localhost:50051> service UserService
+pb.UserService@localhost:50051> call AddUser
+id (TYPE_INT32) => 0
+name (TYPE_STRING) => Bruno Paz
+email (TYPE_STRING) => soujava@gmail.com
 ```
 
 
