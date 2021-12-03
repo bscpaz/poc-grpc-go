@@ -53,6 +53,18 @@ Intall and use the project evans:
 
 * https://github.com/ktr0731/evans
 
+```console
+#From user's root directory
+
+#After extract, add evans into .profile file:
+export EVANS=$GOBIN/evans
+export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN:$EVANS
+
+#Create needed folder.
+bscpaz@2am:/$ sudo mkdir .cache/evans
+bscpaz@2am:/$ sudo chown -R bscpaz:bscpaz .cache/
+```
+
 
 <hr>
 <h4 align="center">Known issues</h4>
