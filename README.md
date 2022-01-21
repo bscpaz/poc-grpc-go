@@ -98,3 +98,10 @@ Solution:
     Add reflection mode into code: 
       reflection.Register(grpcServer)
 ``` 
+```console
+Issue:
+  Command 'go' not found, but can be installed with:
+Solution:
+  bscpaz@2am:/$ cd ~
+  bscpaz@2am:/$ source .profile
+``` 
