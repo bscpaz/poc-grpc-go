@@ -76,6 +76,8 @@ email (TYPE_STRING) => soujava@gmail.com
   "id": 123456,
   "name": "Bruno Paz"
 }
+
+pb.UserService@localhost:50051> exit
 ```
 
 
@@ -101,7 +103,10 @@ Solution:
 ```console
 Issue:
   Command 'go' not found, but can be installed with:
+  or
+  evans: command not found
 Solution:
+  You've opened a new terminal and it requires a new refresh on .profile file.
   bscpaz@2am:/$ cd ~
   bscpaz@2am:/$ source .profile
 ``` 
