@@ -49,6 +49,12 @@ bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=
 bscpaz@2am:/$ go run cmd/server/server.go
 ```
 
+#### How to call gRPC server:
+
+```console
+bscpaz@2am:/$ go run cmd/client/client.go
+```
+
 #### How to test gRPC calls:
 Install and use the Evans project:
 
