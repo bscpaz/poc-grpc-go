@@ -43,7 +43,7 @@ bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
 ```
 
-#### How to start gRPC server:
+#### How to start gRPC server (stream server):
 
 ```console
 bscpaz@2am:/$ go run cmd/server/server.go
