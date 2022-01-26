@@ -117,3 +117,9 @@ Solution:
   bscpaz@2am:/$ cd ~
   bscpaz@2am:/$ source .profile
 ``` 
+```console
+Issue:
+  protoc-gen-go: program not found or is not executable
+ Solution:
+ 
+``` 
