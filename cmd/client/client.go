@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 
 	"github.com/bscpaz/poc-grpc-go/pb"
@@ -22,7 +23,8 @@ func main() {
 	//You get all implemented methods to server "for free" (it cames from the stubs).
 	client := pb.NewUserServiceClient(connection)
 
-	AddUser(client)
+	//AddUser(client)
+	AddUserVerbose(client)
 }
 
 func AddUser(client pb.UserServiceClient) {
@@ -40,4 +42,34 @@ func AddUser(client pb.UserServiceClient) {
 	}
 
 	fmt.Println(res)
+}
+
+func AddUserVerbose(client pb.UserServiceClient) {
+	//Building the "payload" to the request.
+	req := &pb.User{
+		Id:    0,
+		Name:  "Bruno Paz",
+		Email: "soujava@gmail.com",
+	}
+
+	//It makes the stream request.
+	responseStream, err := client.AddUserVerbose(context.Background(), req)
+	if err != nil {
+		log.Fatalf("Could not make gRPC request: %v", err)
+	}
+
+	//Infitity loop to receive the steam status
+	for {
+		stream, err := responseStream.Recv()
+		if err == io.EOF {
+			//There is no more stream return
+			break
+		}
+
+		if err != nil {
+			log.Fatalf("Could not receive the message: %v", err)
+		}
+
+		fmt.Println("Status: ", stream.Status)
+	}
 }

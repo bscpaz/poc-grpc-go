@@ -23,7 +23,8 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	//Attaching the implementation of AddUser to server
-	//It comes from "user_grpc.pb.go" file
+	//The 'pb.RegisterUserServiceServer()' comes from "user_grpc.pb.go" file
+	//The 'services.NewUserService()' is in the "services/user_services.go" file.
 	pb.RegisterUserServiceServer(grpcServer, services.NewUserService())
 	reflection.Register(grpcServer)
 
