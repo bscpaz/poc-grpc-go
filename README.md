@@ -22,8 +22,9 @@
 #.profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/projects/go
+export PROTOC=$GOPATH/bin
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
+export PATH=$PATH:$GOROOT:$GOPATH:$PROTOC:$GOBIN
 ```
 
 ```console
@@ -34,7 +35,7 @@ bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
 #it creates a new go module.
 bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
 
-#Intall protocol buffers on machine.
+#Install protocol buffers on machine.
 bscpaz@2am:/$ go get -u google.golang.org/grpc
 bscpaz@2am:/$ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
@@ -120,6 +121,11 @@ Solution:
 ```console
 Issue:
   protoc-gen-go: program not found or is not executable
- Solution:
- 
+Solution:
+  protoc-ge-go is installed into '~/projects/go/bin'. Add that path into .profile file
+  export PROTOC=$GOPATH/bin
+  
+  bscpaz@2am:/$ source .profile
+  bscpaz@2am:/$ cd ~/projects/go/poc-grpc-go
+  bscpaz@2am:/$ sudo chown -R bscpaz:bscpaz poc-grpc-go/
 ``` 
