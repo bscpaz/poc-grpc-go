@@ -2,7 +2,7 @@
 
 syntax = "proto3";
 package pb;
-option go_package = ".;pb";
+option go_package = "../pb";
 
 message User {
     int32 id = 1;
@@ -27,4 +27,7 @@ service UserService {
 
     //This will send a stream of type Users.
     rpc AddUsers (stream User) returns (Users);
+
+    //This will send a bi-directional stream.
+    rpc AddUserBiDirectionStream(stream User) returns (stream UserResultStream);
 }

@@ -26,7 +26,9 @@ func main() {
 
 	//AddUser(client)
 	//AddUserVerbose(client)
-	AddUsers(client)
+	//AddUsers(client)
+	AddUserBiDirectionStream(client)
+
 }
 
 func AddUser(client pb.UserServiceClient) {
@@ -148,4 +150,100 @@ func AddUsers(client pb.UserServiceClient) {
 	}
 
 	fmt.Println(res)
+}
+
+func AddUserBiDirectionStream(client pb.UserServiceClient) {
+	stream, err := client.AddUserBiDirectionStream(context.Background())
+
+	if err != nil {
+		log.Fatalf("Error receiving stream from client: %v", err)
+	}
+
+	reqs := []*pb.User{
+		&pb.User{
+			Id:    1,
+			Name:  "Jack Bauer",
+			Email: "jack@mail.com",
+		},
+		&pb.User{
+			Id:    2,
+			Name:  "Nina Myers",
+			Email: "nina@mail.com",
+		},
+		&pb.User{
+			Id:    3,
+			Name:  "Tony Almeida",
+			Email: "toni@mail.com",
+		},
+		&pb.User{
+			Id:    4,
+			Name:  "David Palmer",
+			Email: "david@mail.com",
+		},
+		&pb.User{
+			Id:    5,
+			Name:  "Chloe O'Brian",
+			Email: "chloe@mail.com",
+		},
+		&pb.User{
+			Id:    6,
+			Name:  "George Mason",
+			Email: "mason@mail.com",
+		},
+		&pb.User{
+			Id:    7,
+			Name:  "Michelle Dessler",
+			Email: "michelle@mail.com",
+		},
+		&pb.User{
+			Id:    8,
+			Name:  "Curtis Manning",
+			Email: "curtis@mail.com",
+		},
+		&pb.User{
+			Id:    9,
+			Name:  "Charles Logan",
+			Email: "logan@mail.com",
+		},
+		&pb.User{
+			Id:    10,
+			Name:  "Milo Pressman",
+			Email: "milo@mail.com",
+		},
+	}
+
+	wait := make(chan int)
+
+	//Sender Anonymous function - it works as asynchronous running in background
+	go func() {
+		for _, req := range reqs {
+			fmt.Println("Sending user: ", req.Name)
+			stream.Send(req)
+			time.Sleep(time.Second * 2)
+		}
+		stream.CloseSend()
+	}()
+
+	//Receiver Anonymous function - it works as asynchronous running in background
+	func() {
+		for {
+			res, err := stream.Recv()
+
+			if err == io.EOF {
+				//There is no more stream return
+				break
+			}
+
+			if err != nil {
+				log.Fatalf("Could not receive the message: %v", err)
+				break
+			}
+
+			fmt.Printf("Receiving user %v with status %v\n", res.GetUser().Name, res.GetStatus())
+		}
+		close(wait) //Kill the channel
+	}()
+
+	//Keep alive the channel.
+	<-wait
 }
