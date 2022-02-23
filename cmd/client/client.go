@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"time"
 
 	"github.com/bscpaz/poc-grpc-go/pb"
 	"google.golang.org/grpc"
@@ -24,7 +25,8 @@ func main() {
 	client := pb.NewUserServiceClient(connection)
 
 	//AddUser(client)
-	AddUserVerbose(client)
+	//AddUserVerbose(client)
+	AddUsers(client)
 }
 
 func AddUser(client pb.UserServiceClient) {
@@ -72,4 +74,78 @@ func AddUserVerbose(client pb.UserServiceClient) {
 
 		fmt.Println("Status: ", stream.Status, " - ", stream.GetUser())
 	}
+}
+
+func AddUsers(client pb.UserServiceClient) {
+	reqs := []*pb.User{
+		&pb.User{
+			Id:    1,
+			Name:  "Jack Bauer",
+			Email: "jack@mail.com",
+		},
+		&pb.User{
+			Id:    2,
+			Name:  "Nina Myers",
+			Email: "nina@mail.com",
+		},
+		&pb.User{
+			Id:    3,
+			Name:  "Tony Almeida",
+			Email: "toni@mail.com",
+		},
+		&pb.User{
+			Id:    4,
+			Name:  "David Palmer",
+			Email: "david@mail.com",
+		},
+		&pb.User{
+			Id:    5,
+			Name:  "Chloe O'Brian",
+			Email: "chloe@mail.com",
+		},
+		&pb.User{
+			Id:    6,
+			Name:  "George Mason",
+			Email: "mason@mail.com",
+		},
+		&pb.User{
+			Id:    7,
+			Name:  "Michelle Dessler",
+			Email: "michelle@mail.com",
+		},
+		&pb.User{
+			Id:    8,
+			Name:  "Curtis Manning",
+			Email: "curtis@mail.com",
+		},
+		&pb.User{
+			Id:    9,
+			Name:  "Charles Logan",
+			Email: "logan@mail.com",
+		},
+		&pb.User{
+			Id:    10,
+			Name:  "Milo Pressman",
+			Email: "milo@mail.com",
+		},
+	}
+
+	stream, err := client.AddUsers(context.Background())
+
+	if err != nil {
+		log.Fatalf("Could not sand stream request: %v", err)
+	}
+
+	for _, req := range reqs {
+		stream.Send(req)
+		time.Sleep(time.Second * 3)
+	}
+
+	res, err := stream.CloseAndRecv()
+
+	if err != nil {
+		log.Fatalf("Could not receive stream response: %v", err)
+	}
+
+	fmt.Println(res)
 }

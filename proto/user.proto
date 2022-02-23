@@ -15,9 +15,16 @@ message UserResultStream {
     User user = 2;
 }
 
+message Users {
+    repeated User user = 1;
+}
+
 service UserService {
     rpc AddUser (User) returns (User);
 
     //This will return a stream of type UserResultStream
     rpc AddUserVerbose (User) returns (stream UserResultStream);
+
+    //This will send a stream of type Users.
+    rpc AddUsers (stream User) returns (Users);
 }
