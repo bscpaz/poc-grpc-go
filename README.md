@@ -26,34 +26,48 @@ export PROTOC=$GOPATH/bin
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT:$GOPATH:$PROTOC:$GOBIN
 ```
+#### Initial settings
+```console
+mkdir pb
+```
+```console
+mkdir proto
+```
+```console
+sudo chown bscpaz:bscpaz pb proto
+```
+
+###### Creating a new go module.
+```console
+go mod init github.com/bscpaz/poc-grpc-go
+```
+
+###### Installing protocol buffers on machine.
+```console
+go get -u google.golang.org/grpc
+```
 
 ```console
-bscpaz@2am:/$ mkdir pb
-bscpaz@2am:/$ mkdir proto 
-bscpaz@2am:/$ sudo chown bscpaz:bscpaz pb proto
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
 
-#it creates a new go module.
-bscpaz@2am:/$ go mod init github.com/bscpaz/poc-grpc-go
+```console
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
 
-#Install protocol buffers on machine.
-bscpaz@2am:/$ go get -u google.golang.org/grpc
-bscpaz@2am:/$ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-bscpaz@2am:/$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-
-#it generates stubs in Go language
-bscpaz@2am:/$ protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
+###### Generating stubs in Go language
+```console
+protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
 ```
 
 #### How to start gRPC server (stream server):
-
 ```console
-bscpaz@2am:/$ go run cmd/server/server.go
+go run cmd/server/server.go
 ```
 
 #### How to call gRPC server:
-
 ```console
-bscpaz@2am:/$ go run cmd/client/client.go
+go run cmd/client/client.go
 ```
 
 #### How to test gRPC calls:
@@ -61,24 +75,32 @@ Install and use the Evans project:
 
 * https://github.com/ktr0731/evans
 
+###### After extract evans program into "/usr/local/go/bin" folder, add evans into .profile file:
 ```console
-#After extract evans program into "/usr/local/go/bin" folder, add evans into .profile file:
 export EVANS=$GOBIN/evans
 export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN:$EVANS
+```
 
-#Create needed folder at user's home folder.
-bscpaz@2am:/$ sudo mkdir .cache/evans
-bscpaz@2am:/$ sudo chown -R bscpaz:bscpaz .cache/
+###### Create needed folder at user's home directory.
+```console
+sudo mkdir .cache/evans
+```
+```console
+sudo chown -R bscpaz:bscpaz .cache/
+```
 
-#From project's folder.
-bscpaz@2am:/$ evans -r repl --host localhost --port 50051
+###### From project's folder.
+```console
+evans -r repl --host localhost --port 50051
 pb.UserService@localhost:50051> service UserService
 pb.UserService@localhost:50051> call AddUser
 id (TYPE_INT32) => 0
 name (TYPE_STRING) => Bruno Paz
 email (TYPE_STRING) => soujava@gmail.com
+```
 
-#Below is the result of client call to server. Note the value of "id":
+###### Below is the result of client call to server. Note the value of "id":
+```console
 {
   "email": "soujava@gmail.com",
   "id": 123456,
